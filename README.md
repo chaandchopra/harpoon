@@ -1,4 +1,4 @@
-# harpoon-fixed
+# harpoon
 
 A lightweight Neovim plugin for marking files and navigating between them instantly.
 
@@ -15,7 +15,7 @@ A lightweight Neovim plugin for marking files and navigating between them instan
 **lazy.nvim**
 ```lua
 {
-  dir = "~/Downloads/harpoon-fixed",   -- or a GitHub path after publishing
+  dir = "chaandchopra/harpoon",   -- or a GitHub path after publishing
   config = function()
     require("harpoon").setup()
   end,
@@ -25,7 +25,7 @@ A lightweight Neovim plugin for marking files and navigating between them instan
 **packer.nvim**
 ```lua
 use {
-  "~/Downloads/harpoon-fixed",
+  "chaandchopra/harpoon-fixed",
   config = function() require("harpoon").setup() end,
 }
 ```
