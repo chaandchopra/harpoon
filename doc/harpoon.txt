@@ -1,0 +1,81 @@
+*harpoon.txt*   Quick-file navigation with a persistent mark list
+
+==============================================================================
+CONTENTS                                                    *harpoon-contents*
+
+  1. Introduction ............ |harpoon-intro|
+  2. Setup ................... |harpoon-setup|
+  3. Default Keymaps ......... |harpoon-keymaps|
+  4. Commands ................ |harpoon-commands|
+  5. Mark List UI ............ |harpoon-ui|
+  6. API ..................... |harpoon-api|
+
+==============================================================================
+1. INTRODUCTION                                               *harpoon-intro*
+
+Harpoon lets you pin files and jump between them instantly. Marks are saved
+to disk and survive across Neovim sessions.
+
+==============================================================================
+2. SETUP                                                      *harpoon-setup*
+
+Minimal (uses all defaults): >
+    require('harpoon').setup()
+<
+With options: >
+    require('harpoon').setup({
+      save_path = vim.fn.stdpath('data') .. '/harpoon_marks.json',
+      max_marks = 10,    -- maximum number of marks
+      keymaps  = true,   -- set false to disable default keymaps
+    })
+<
+==============================================================================
+3. DEFAULT KEYMAPS                                          *harpoon-keymaps*
+
+  <leader>ha   Toggle mark on the current file
+  <leader>hh   Open / close the mark list window
+  <leader>hn   Jump to the next mark
+  <leader>hp   Jump to the previous mark
+  <leader>h1   Jump to mark 1
+  <leader>h2   Jump to mark 2
+  <leader>h3   Jump to mark 3
+  <leader>h4   Jump to mark 4
+  <leader>h5   Jump to mark 5
+
+==============================================================================
+4. COMMANDS                                                *harpoon-commands*
+
+  :HarpoonMark         Toggle mark on the current file
+  :HarpoonList         Open / close the mark list window
+  :HarpoonNext         Jump to the next mark
+  :HarpoonPrev         Jump to the previous mark
+  :HarpoonNav {n}      Jump to mark number {n}
+
+==============================================================================
+5. MARK LIST UI                                               *harpoon-ui*
+
+Keys available inside the floating mark list:
+
+  <CR>      Open the file on the current line
+  d         Remove the mark on the current line
+  K         Move mark up one position
+  J         Move mark down one position
+  1-9       Jump directly to that mark number
+  q / <Esc> Close the window
+
+==============================================================================
+6. API                                                        *harpoon-api*
+
+All functions live on the table returned by `require('harpoon')`.
+
+  M.setup(opts)      Initialise the plugin (loads saved marks, sets keymaps)
+  M.mark_file()      Add current file to the mark list
+  M.unmark_file()    Remove current file from the mark list
+  M.toggle_mark()    Mark if not marked, unmark if already marked
+  M.nav_to(n)        Open the nth mark (1-based)
+  M.nav_next()       Cycle to the next mark
+  M.nav_prev()       Cycle to the previous mark
+  M.toggle_ui()      Open or close the floating mark list
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:
